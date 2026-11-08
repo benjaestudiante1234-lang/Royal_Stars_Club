@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#0c1b2d"/>
+<meta name="description" content="Horarios y calendario de actividades de Royal Star’s Club."/>
+<title>Cronograma | Royal Star’s Club</title>
+<link rel="icon" href="assets/img/favicon-royal.png" type="image/png"/>
+<link rel="stylesheet" href="assets/css/portal.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+<header class="portal-topbar"><div class="portal-topbar-inner">
+<a class="portal-brand" href="index.html"><img src="assets/img/logo-royal.png" alt="Escudo Royal Star’s Club"/><span>ROYAL STAR’S CLUB<small>PÁDEL · EQUIPO · FORMACIÓN</small></span></a>
+<a class="portal-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al sitio</a>
+</div></header>
+<main class="portal-page">
+<section class="portal-hero" data-mark="FECHAS"><div class="portal-hero-content">
+<span class="portal-kicker">Organizá tu semana</span><h1>Cronograma <span>Royal</span></h1>
+<p>Consultá la grilla orientativa de actividades y revisá las fechas publicadas en el calendario de Royal Star’s Club.</p>
+<a class="portal-btn" href="#horarios"><i class="fa-regular fa-clock"></i> Ver horarios</a>
+<a class="portal-btn secondary" href="#calendario"><i class="fa-regular fa-calendar"></i> Ver calendario</a>
+</div></section>
+<section class="portal-panel" id="horarios">
+<span class="portal-kicker">Planificá tus prácticas</span><h2>Horarios de entrenamiento</h2>
+<p class="portal-intro">Esta grilla conserva los horarios ilustrativos de la página principal. Confirmá disponibilidad y turnos vigentes por WhatsApp antes de asistir.</p>
+<div class="schedule-table-wrap"><table class="schedule-table"><thead><tr><th>Actividad</th><th>Categoría</th><th>Días</th><th>Horario de referencia</th></tr></thead><tbody>
+<tr><td>Escuela de pádel</td><td>Infantiles</td><td>Lunes y miércoles</td><td><span class="schedule-time">09:00–10:00</span></td></tr>
+<tr><td>Formación técnica</td><td>Adolescentes</td><td>Martes y jueves</td><td><span class="schedule-time">17:00–18:30</span></td></tr>
+<tr><td>Entrenamiento general</td><td>Adultos</td><td>Lunes, miércoles y viernes</td><td><span class="schedule-time">18:30–20:00</span></td></tr>
+<tr><td>Preparación competitiva</td><td>Por nivel</td><td>Sábados</td><td><span class="schedule-time">A coordinar</span></td></tr>
+</tbody></table></div>
+<div class="portal-alert"><strong>Atención:</strong> los horarios son de referencia y no representan una confirmación de cupos o clases disponibles. Consultá los turnos vigentes antes de asistir.</div>
+</section>
+<section class="portal-panel" id="calendario">
+<span class="portal-kicker">Fechas y actividades</span><h2>Calendario de la academia</h2><p class="portal-intro">Usá las flechas para cambiar de mes y seleccioná una fecha para consultar la actividad publicada.</p>
+<div class="schedule-layout"><div><div class="calendar-shell"><div class="calendar-head"><h3 id="calendarMonth" aria-live="polite">Mes</h3><div class="calendar-nav"><button id="prevMonth" type="button" aria-label="Mes anterior"><i class="fa-solid fa-chevron-left"></i></button><button id="nextMonth" type="button" aria-label="Mes siguiente"><i class="fa-solid fa-chevron-right"></i></button></div></div><div class="calendar-grid" id="calendarGrid" aria-label="Calendario mensual"></div></div><p class="small text-muted mt-2 mb-0"><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#a75e1c;margin-right:5px"></span>Día con una actividad publicada.</p></div>
+<div class="event-panel"><span class="event-date" id="selectedDateLabel">Fecha seleccionada</span><h3 id="eventTitle">Elegí una fecha</h3><p id="eventDescription">Seleccioná un día para consultar si hay una actividad programada.</p><div class="event-detail"><i class="fa-regular fa-clock"></i><div><strong>Horario</strong><span id="eventTime">A confirmar</span></div></div><div class="event-detail"><i class="fa-solid fa-location-dot"></i><div><strong>Lugar</strong><span id="eventPlace">Royal Star’s Club</span></div></div><a class="portal-btn mt-3" href="https://wa.me/543855944628?text=Hola,%20quiero%20consultar%20por%20el%20cronograma%20de%20Royal%20Stars%20Club" rel="noopener" target="_blank"><i class="fa-brands fa-whatsapp"></i> Consultar una fecha</a></div>
+</div>
+</section>
+<footer class="portal-footer">© <span id="currentYear"></span> Royal Star’s Club · <a href="index.html">Volver a la página principal</a> · <a href="novedades.html" rel="noopener" target="_blank">Ver novedades</a></footer>
+</main>
+<script src="assets/js/cronograma.js"></script>
+</body>
+</html>

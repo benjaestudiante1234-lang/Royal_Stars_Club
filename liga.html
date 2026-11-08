@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="#0c1b2d" name="theme-color"/>
+<meta content="Informaci&oacute;n de la Liga de Royal en Royal Star&rsquo;s Club." name="description"/>
+<title>Liga de Royal | Royal Star&rsquo;s Club</title>
+<link href="assets/img/favicon-royal.png" rel="icon" type="image/png"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="assets/css/liga.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-inner">
+<a class="brand" href="index.html"><img alt="Escudo Royal Star&rsquo;s Club" src="assets/img/logo-royal.png"/><span>ROYAL STAR&rsquo;S CLUB<small>P&Aacute;DEL &middot; EQUIPO &middot; FORMACI&Oacute;N</small></span></a>
+<a aria-label="Volver a la p&aacute;gina principal" class="back-link" href="index.html">&larr; Volver al sitio</a>
+</div>
+</header>
+<main class="page" id="ligaApp">
+<section class="hero">
+<div class="hero-copy">
+<span class="eyebrow">Royal Star&rsquo;s Club presenta</span>
+<h1>Liga de <span>Royal</span></h1>
+<p>&iexcl;Hola! &iquest;C&oacute;mo va? Te invitamos a participar de una nueva liga para competir, compartir y disfrutar del p&aacute;del en Royal Star&rsquo;s Club.</p>
+<span class="location">📍 ROYAL STARS CLUB</span>
+</div>
+<div class="date-card"><div><small>COMIENZA</small><strong>06</strong><span>NOVIEMBRE 2026</span></div></div>
+</section>
+<section aria-label="Datos principales de la liga" class="metrics">
+<article class="metric"><small>Inscripci&oacute;n</small><strong>$30.000</strong><p>Por jugador. Pod&eacute;s abonarla en partes.</p></article>
+<article class="metric"><small>Frecuencia</small><strong>1 partido / semana</strong><p>Viernes o s&aacute;bado, con horario a convenir.</p></article>
+<article class="metric"><small>Cada fecha</small><strong>$5.000</strong><p>Por jugador y por jornada de juego.</p></article>
+</section>
+<div class="content-grid">
+<section class="panel">
+<span class="kicker">Formato de competencia</span>
+<h2>&iquest;C&oacute;mo se juega?</h2>
+<p class="intro">La liga se organiza en una primera etapa de grupos y luego contin&uacute;a con los playoffs.</p>
+<div class="steps">
+<article class="step"><span class="step-number">1</span><div><h3>Fase de grupos</h3><p>En esta etapa te enfrent&aacute;s a 4 parejas.</p></div></article>
+<article class="step"><span class="step-number">2</span><div><h3>Playoffs</h3><p>Las 3 mejores parejas avanzan a los playoffs para competir por el campeonato.</p></div></article>
+<article class="step"><span class="step-number">3</span><div><h3>Copa de Plata</h3><p>Si qued&aacute;s fuera de los playoffs, segu&iacute;s jugando por la Copa de Plata.</p></div></article>
+</div>
+<div class="notice"><strong>Importante sobre la inscripci&oacute;n:</strong> el valor es de $30.000 por jugador y pod&eacute;s abonarlo en partes. Al menos una inscripci&oacute;n debe estar abonada en su totalidad el d&iacute;a de inicio de la liga.</div>
+</section>
+<section class="panel">
+<span class="kicker">Eleg&iacute; tu categor&iacute;a</span>
+<h2>Categor&iacute;as</h2>
+<p class="intro">Seleccion&aacute; la rama para consultar las categor&iacute;as disponibles.</p>
+<div aria-label="Elegir rama" class="category-buttons" role="group">
+<button :class="{active: categoriaActiva === 'Masculino'}" @click="categoriaActiva = 'Masculino'" type="button">Masculino</button>
+<button :class="{active: categoriaActiva === 'Damas'}" @click="categoriaActiva = 'Damas'" type="button">Damas</button>
+</div>
+<label class="category-help" for="categorySearch" style="display:block;margin:0 0 7px;color:#536174;font-weight:800">Buscar una categor&iacute;a</label>
+<input class="category-select" id="categorySearch" placeholder="Escrib&iacute;, por ejemplo, 8va o Suma 6" type="search" v-model.trim="busquedaCategoria"/>
+<div aria-live="polite" class="tags" v-if="categoriasFiltradas.length">
+<span :key="categoria" class="tag" v-for="categoria in categoriasFiltradas">{{ categoria }}</span>
+</div>
+<p class="category-help" role="status" v-else="">No hay categor&iacute;as que coincidan con esa b&uacute;squeda.</p>
+<p class="category-help">Los partidos se juegan una vez por semana, viernes o s&aacute;bado, en un horario acordado entre las parejas y la organizaci&oacute;n.</p>
+</section>
+</div>
+<section class="panel faq" style="margin-top:18px">
+<span class="kicker">Antes de anotarte</span>
+<h2>Preguntas frecuentes</h2>
+<div :key="faq.pregunta" class="faq-item" v-for="(faq, index) in preguntas">
+<button :aria-expanded="preguntaAbierta === index" @click="preguntaAbierta = preguntaAbierta === index ? -1 : index" type="button">
+<span>{{ faq.pregunta }}</span><span aria-hidden="true">{{ preguntaAbierta === index ? '&minus;' : '+' }}</span>
+</button>
+<p v-if="preguntaAbierta === index">{{ faq.respuesta }}</p>
+</div>
+</section>
+<section class="cta">
+<div><h2>&iquest;Quer&eacute;s inscribirte?</h2><p>Contactanos para consultar por cupos y registrar tu pareja.</p></div>
+<a href="https://wa.me/543855944628?text=Hola,%20quiero%20inscribirme%20a%20la%20Liga%20de%20Royal" rel="noopener" target="_blank">CONTACTAR PARA INSCRIBIRME &nearrow;</a>
+</section>
+<footer class="footer">&copy; 2026 Royal Star&rsquo;s Club &middot; <a href="index.html">Volver a la p&aacute;gina principal</a></footer>
+</main>
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script src="assets/js/liga.js"></script>
+</body>
+</html>
