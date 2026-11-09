@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="theme-color" content="#0c1b2d"/>
+<meta name="description" content="Artículos, experiencias e historias de Royal Star’s Club."/>
+<title>Blog | Royal Star’s Club</title>
+<link rel="icon" href="assets/img/favicon-royal.png" type="image/png"/>
+<link rel="stylesheet" href="assets/css/portal.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+</head>
+<body>
+<header class="portal-topbar"><div class="portal-topbar-inner">
+<a class="portal-brand" href="index.html"><img src="assets/img/logo-royal.png" alt="Escudo Royal Star’s Club"/><span>ROYAL STAR’S CLUB<small>PÁDEL · EQUIPO · FORMACIÓN</small></span></a>
+<a class="portal-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Volver al sitio</a>
+</div></header>
+<main class="portal-page">
+<section class="portal-hero" data-mark="BLOG"><div class="portal-hero-content">
+<span class="portal-kicker">Historias · Ideas · Experiencias</span>
+<h1>Blog <span>Royal</span></h1>
+<p>Artículos y experiencias sobre el pádel, la formación y la comunidad de Royal Star’s Club.</p>
+<a class="portal-btn" href="#articulos"><i class="fa-solid fa-book-open"></i> Ver artículos</a>
+</div></section>
+<section class="portal-panel" id="articulos">
+<span class="portal-kicker">Ideas para compartir</span><h2>Artículos del club</h2>
+<p class="portal-intro">Leé nuestras historias y experiencias. El Blog es un espacio distinto de las noticias y los resultados del club.</p>
+<div class="news-toolbar"><input class="news-search" id="newsSearch" type="search" placeholder="Buscar un artículo…" aria-label="Buscar artículos"/></div>
+<div class="news-grid" id="newsGrid" data-category="Blog" aria-live="polite"><div class="news-empty">Cargando artículos…</div></div>
+</section>
+<footer class="portal-footer">© <span id="currentYear"></span> Royal Star’s Club · <a href="index.html">Volver a la página principal</a> · <a href="novedades.html#noticias" target="_blank" rel="noopener">Ver noticias</a></footer>
+</main>
+<dialog class="news-dialog" id="newsDialog"><div class="dialog-inner"><button type="button" class="dialog-close" id="closeNewsDialog" aria-label="Cerrar">×</button><div id="dialogContent"></div></div></dialog>
+<script src="assets/js/novedades.js"></script>
+</body>
+</html>

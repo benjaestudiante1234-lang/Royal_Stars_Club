@@ -13,12 +13,13 @@
     url: 'noticia-duelo-hermanas-lorenzo.html'
   }];
   const grid = document.getElementById('newsGrid');
+  const excludedCategory = grid?.dataset.excludeCategory;
   const search = document.getElementById('newsSearch');
   const filters = document.getElementById('newsFilters');
   const dialog = document.getElementById('newsDialog');
   const dialogContent = document.getElementById('dialogContent');
   let newsItems = [];
-  let activeFilter = 'Todas';
+  let activeFilter = grid?.dataset.category || 'Todas';
 
   const safeText = (value) => String(value ?? '').replace(/[&<>"']/g, c => ({
     '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
@@ -49,12 +50,14 @@
   function render() {
     const term = (search?.value || '').trim().toLocaleLowerCase('es-AR');
     const visible = newsItems.filter(item =>
+      item.category !== excludedCategory &&
       (activeFilter === 'Todas' || item.category === activeFilter) &&
       `${item.title} ${item.summary} ${item.content} ${item.category}`.toLocaleLowerCase('es-AR').includes(term)
     );
 
     if (!visible.length) {
-      grid.innerHTML = `<div class="news-empty"><strong>${newsItems.length ? 'No encontramos publicaciones' : 'Todavía no hay noticias publicadas'}</strong><br><span>${newsItems.length ? 'Probá con otro filtro o búsqueda.' : 'Pronto vamos a compartir nuevas noticias y actividades de Royal.'}</span></div>`;
+      const isBlog = activeFilter === 'Blog';
+      grid.innerHTML = `<div class="news-empty"><strong>${newsItems.length ? 'No encontramos publicaciones' : isBlog ? 'Todavía no hay artículos en el blog' : 'Todavía no hay noticias publicadas'}</strong><br><span>${newsItems.length ? 'Probá con otro filtro o búsqueda.' : isBlog ? 'Pronto vamos a compartir artículos y experiencias de Royal.' : 'Pronto vamos a compartir nuevas noticias y actividades de Royal.'}</span></div>`;
       return;
     }
 
@@ -64,7 +67,7 @@
         <div class="news-card-body">
           <div class="news-meta"><span>${safeText(item.category)}</span><time datetime="${safeText(item.date)}">${safeText(formatDate(item.date))}</time></div>
           <h3>${safeText(item.title)}</h3><p>${safeText(item.summary)}</p>
-          <button type="button" data-open-news="${safeText(item.id)}">Leer noticia <i class="fa-solid fa-arrow-right ms-1"></i></button>
+          <button type="button" data-open-news="${safeText(item.id)}">Leer ${item.category === 'Blog' ? 'artículo' : 'noticia'} <i class="fa-solid fa-arrow-right ms-1"></i></button>
         </div>
       </article>`).join('');
   }
