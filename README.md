@@ -85,7 +85,7 @@ Ejemplo de video MP4:
 }
 ```
 
-Las categorías admitidas son `Instalaciones`, `Canchas`, `Entrenamientos`, `Torneos y competencias`, `Eventos` y `Comunidad`. También se puede usar `Todas` como filtro visual, aunque no es necesario guardarlo en cada elemento.
+Por el momento, la interfaz muestra `Todas`, `Torneos y competencias` y `Eventos`. La estructura continúa preparada para futuras categorías, que pueden volver a mostrarse agregando su botón en `index.html`.
 
 ## Cómo probarlo localmente
 
