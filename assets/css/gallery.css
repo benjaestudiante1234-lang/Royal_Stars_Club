@@ -3,6 +3,10 @@
 .gallery-filter{flex:0 0 auto;border:1px solid #dfd1bc;border-radius:999px;background:#fffdf9;color:#596477;padding:.68rem 1rem;font-weight:800;font-size:.86rem;transition:.2s ease}
 .gallery-filter:hover,.gallery-filter:focus-visible{border-color:#c17a35;color:#8f511b}
 .gallery-filter.active{background:var(--navy);border-color:var(--navy);color:#fff;box-shadow:0 8px 18px #101a2a22}
+.gallery-date-toolbar{display:flex;gap:.45rem;flex-wrap:wrap;padding:0 0 1.25rem}
+.gallery-date-filter{border:1px solid #eadcc7;border-radius:999px;background:#fff8ed;color:#7b4a20;padding:.48rem .78rem;font-size:.78rem;font-weight:850;transition:.2s ease}
+.gallery-date-filter:hover,.gallery-date-filter:focus-visible{border-color:var(--gold);color:var(--navy)}
+.gallery-date-filter.active{background:#fff0dc;border-color:#d99a50;color:#764216}
 .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.15rem}
 .gallery-card{position:relative;min-width:0;border:1px solid #eadfce;border-radius:18px;overflow:hidden;background:#fffdf9;box-shadow:0 8px 24px #2532460b;opacity:0;transform:translateY(10px);animation:gallery-in .35s ease forwards}
 .gallery-card-inner{position:relative;display:block;width:100%;height:260px;border:0;padding:0;background:#13233a;text-align:left;color:#fff;overflow:hidden}

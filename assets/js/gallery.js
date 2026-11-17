@@ -1,9 +1,10 @@
 (() => {
   const grid = document.getElementById('galleryGrid');
   const filters = document.getElementById('galleryFilters');
-  if (!grid || !filters) return;
+  const dateFilters = document.getElementById('galleryDateFilters');
+  if (!grid || !filters || !dateFilters) return;
 
-  const state = { items: [], category: 'Todas', imageItems: [], imageIndex: 0 };
+  const state = { items: [], category: 'Todas', date: 'Todas', imageItems: [], imageIndex: 0 };
 
   const dialog = document.createElement('dialog');
   dialog.className = 'gallery-dialog';
@@ -59,7 +60,11 @@
   }
 
   function openImage(item) {
-    state.imageItems = state.items.filter(entry => entry.type === 'image' && (state.category === 'Todas' || entry.category === state.category));
+    state.imageItems = state.items.filter(entry =>
+      entry.type === 'image'
+      && (state.category === 'Todas' || entry.category === state.category)
+      && (state.category !== 'Torneos y competencias' || state.date === 'Todas' || entry.date === state.date)
+    );
     const index = state.imageItems.indexOf(item);
     prevButton.hidden = state.imageItems.length < 2;
     nextButton.hidden = state.imageItems.length < 2;
@@ -98,7 +103,11 @@
   function render() {
     grid.classList.remove('gallery-fading');
     grid.replaceChildren();
-    const visible = state.items.filter(item => state.category === 'Todas' || item.category === state.category);
+    const visible = state.items.filter(item => {
+      const categoryMatches = state.category === 'Todas' || item.category === state.category;
+      const dateMatches = state.category !== 'Torneos y competencias' || state.date === 'Todas' || item.date === state.date;
+      return categoryMatches && dateMatches;
+    });
     if (!visible.length) {
       const empty = document.createElement('div');
       empty.className = 'gallery-empty';
@@ -147,7 +156,8 @@
 
       const meta = document.createElement('div');
       meta.className = 'gallery-card-meta';
-      meta.innerHTML = `<strong>${escapeHtml(item.title || (item.type === 'image' ? 'Momentos Royal' : 'Video Royal'))}</strong><span>${escapeHtml(item.category)}</span>`;
+      const metaLabel = item.date ? `${item.category} · ${item.date}` : item.category;
+      meta.innerHTML = `<strong>${escapeHtml(item.title || (item.type === 'image' ? 'Momentos Royal' : 'Video Royal'))}</strong><span>${escapeHtml(metaLabel)}</span>`;
       button.appendChild(meta);
       card.appendChild(button);
       grid.appendChild(card);
@@ -158,7 +168,26 @@
     const button = event.target.closest('[data-category]');
     if (!button) return;
     state.category = button.dataset.category;
+    state.date = 'Todas';
+    dateFilters.hidden = state.category !== 'Torneos y competencias';
+    dateFilters.querySelectorAll('[data-date]').forEach(filter => {
+      const active = filter.dataset.date === 'Todas';
+      filter.classList.toggle('active', active);
+      filter.setAttribute('aria-pressed', String(active));
+    });
     filters.querySelectorAll('[data-category]').forEach(filter => {
+      const active = filter === button;
+      filter.classList.toggle('active', active);
+      filter.setAttribute('aria-pressed', String(active));
+    });
+    render();
+  });
+
+  dateFilters.addEventListener('click', event => {
+    const button = event.target.closest('[data-date]');
+    if (!button) return;
+    state.date = button.dataset.date;
+    dateFilters.querySelectorAll('[data-date]').forEach(filter => {
       const active = filter === button;
       filter.classList.toggle('active', active);
       filter.setAttribute('aria-pressed', String(active));

@@ -87,6 +87,8 @@ Ejemplo de video MP4:
 
 Por el momento, la interfaz muestra `Todas`, `Torneos y competencias` y `Eventos`. La estructura continúa preparada para futuras categorías, que pueden volver a mostrarse agregando su botón en `index.html`.
 
+Torneos y competencias incluye subfiltros por fecha: `Viernes 06` y `Viernes 13`. Las fotos se encuentran organizadas en `assets/img/galeria/torneos-06/` y `assets/img/galeria/torneos-13/`. Para agregar otra fecha, creá una carpeta nueva, agregá el elemento `date` al JSON y añadí el botón correspondiente en `galleryDateFilters`.
+
 ## Cómo probarlo localmente
 
 1. Descargá o cloná el repositorio.
