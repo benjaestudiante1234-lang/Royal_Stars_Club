@@ -1,7 +1,7 @@
 :root{--navy:#0c1b2d;--blue:#173b63;--blue2:#2d5686;--orange:#f58220;--orange2:#ffad55;--ink:#172231;--muted:#5e6b7a;--paper:#fffdf9}
     *{box-sizing:border-box;scroll-behavior:smooth}
     body{margin:0;min-height:100vh;font-family:Montserrat,system-ui,Segoe UI,Arial,sans-serif;color:var(--ink);background:#09182a}
-    body::before{content:"";position:fixed;inset:0;z-index:-2;background:url('fondo-royal.png') center/cover no-repeat}
+    body::before{content:"";position:fixed;inset:0;z-index:-2;background:url('../img/fondo-royal.png') center/cover no-repeat}
     body::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(4,13,25,.72),rgba(5,16,29,.58))}
     a{color:inherit}
     .topbar{background:rgba(8,20,35,.94);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff20;color:#fff}
