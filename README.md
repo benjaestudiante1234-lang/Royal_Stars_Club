@@ -15,10 +15,12 @@ Royal_Stars_Club/
 ├── assets/
 │   ├── css/
 │   │   ├── main.css           # Estilos de la página principal
+│   │   ├── gallery.css        # Estilos de la galería
 │   │   ├── liga.css           # Estilos de la página de Liga
 │   │   └── portal.css         # Estilos de Blog, Noticias y Cronograma
 │   ├── js/
 │   │   ├── main.js            # Menú, calendario de inicio y funciones generales
+│   │   ├── gallery.js         # Filtros, visor de fotos y reproductores de video
 │   │   ├── liga.js            # Vue 3: categorías, búsqueda y preguntas
 │   │   ├── novedades.js       # Filtros, lectura y carga de Blog y Noticias
 │   │   └── cronograma.js      # Calendario interactivo
@@ -42,6 +44,48 @@ Royal_Stars_Club/
 Las páginas públicas `blog.html` y `novedades.html` son de solo lectura: no contienen formularios de carga ni paneles de administración visibles. Para agregar o modificar una noticia o artículo, editá `assets/data/novedades.json` en el repositorio. Cada publicación usa los campos `id`, `title`, `category`, `date`, `summary`, `content`, `image` (opcional) y `url` (opcional, para abrir una página editorial propia). Usá `Blog` para que una publicación aparezca en el Blog; las demás categorías se muestran en Noticias. En `image` podés indicar una ruta relativa dentro de `assets/img/`. Después guardá los cambios y subilos a GitHub (`git add .`, `git commit -m "Actualizar novedades"`, `git push`). GitHub Pages actualizará la página pública al publicar el nuevo commit.
 
 Esta versión HTML estática no tiene autenticación ni base de datos; la administración online desde un panel privado requiere un backend (por ejemplo, Django).
+
+## Cómo actualizar la galería
+
+La sección Galería se alimenta desde `assets/data/galeria.json`. Los elementos pueden ser fotografías, videos de YouTube o archivos MP4 locales. Las fotografías se guardan preferentemente en `assets/img/galeria/` y los videos MP4 en `assets/videos/`.
+
+Ejemplo de fotografía:
+
+```json
+{
+  "type": "image",
+  "category": "Canchas",
+  "title": "Cancha principal",
+  "alt": "Cancha principal de Royal Star's Club",
+  "src": "assets/img/galeria/cancha-principal.jpg"
+}
+```
+
+Ejemplo de video de YouTube:
+
+```json
+{
+  "type": "youtube",
+  "category": "Entrenamientos",
+  "title": "Trabajo técnico",
+  "youtubeId": "ID_DEL_VIDEO",
+  "thumbnail": "assets/img/galeria/entrenamiento.jpg"
+}
+```
+
+Ejemplo de video MP4:
+
+```json
+{
+  "type": "video",
+  "category": "Eventos",
+  "title": "Evento del club",
+  "src": "assets/videos/evento.mp4",
+  "poster": "assets/img/galeria/evento.jpg"
+}
+```
+
+Las categorías admitidas son `Instalaciones`, `Canchas`, `Entrenamientos`, `Torneos y competencias`, `Eventos` y `Comunidad`. También se puede usar `Todas` como filtro visual, aunque no es necesario guardarlo en cada elemento.
 
 ## Cómo probarlo localmente
 
